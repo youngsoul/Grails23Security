@@ -1,0 +1,30 @@
+
+in BuildConfig.groovy add:
+// http://stackoverflow.com/questions/19196442/dependencies-issue-with-spring-security-core-plugin
+mavenRepo 'http://repo.spring.io/milestone'
+
+compile ':spring-security-core:2.0-RC2'
+
+execute:  grails compile
+
+execute: s2-quickstart com.bluelobsterstudios User Role
+
+add firstName, lastName to User class
+
+add code to Bootstrap.groovy to create Roles, Users and UserRoles
+
+create home controller
+
+create public controller
+
+update HomeController and PublicController with secured actions
+
+** Not sure why it seems that the @Secured annotation is not working, so for me to secure
+these I had to use the Config.groovy staticRules sections.
+
+** I also had to add the dbconsole plugin path to get that plugin to be accessible
+
+add to bottom of Config.groovy:
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/home'
+
+
